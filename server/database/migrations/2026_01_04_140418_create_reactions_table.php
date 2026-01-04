@@ -10,14 +10,15 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('reactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
-                ->constrained('users')   
-                ->onDelete('cascade');   
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->timestamps();
+                ->constrained('users')
+                ->onDelete('cascade'); 
+            $table->unsignedBigInteger('reactable_id');  
+            $table->string('reactable_type');           
+            $table->string('type');                      
+            $table->timestamps();                        
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('reactions');
     }
 };
