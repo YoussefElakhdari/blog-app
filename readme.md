@@ -207,7 +207,7 @@ Tables include:
 | POST   | `/api/register` | Register a new user         |
 | POST   | `/api/login`    | Login and receive API token |
 | POST   | `/api/logout`   | Logout (revoke token)       |
-| GET    | `/api/me`       | Get authenticated user data |
+| GET    | `/api/user`       | Get authenticated user data |
 
 ### Posts
 
