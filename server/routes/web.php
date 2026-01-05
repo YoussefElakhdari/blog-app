@@ -14,6 +14,7 @@ Route::post('/profiles/register',[AuthController::class,'register']);
 Route::get('/profiles/{id}',[AuthController::class,'show']);
 Route::delete('/profiles/{id}',[AuthController::class,'destroy']);
 Route::put('/profiles/{id}',[AuthController::class,'update']);
+Route::post('/profiles/login',[AuthController::class,'login']);
 //les Routes posts
 Route::get('/posts',[PostController::class,'index'])->name('posts');
 Route::post('/posts',[PostController::class,'store']);

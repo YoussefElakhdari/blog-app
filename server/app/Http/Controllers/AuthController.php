@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -28,6 +29,16 @@ class AuthController extends Controller
             'bio'=>$request->bio,
             'image'=>$request->image,
         ]);
+    }
+    public function login(Request $request){
+        $email=$request->email;
+        $password=$request->password;
+        $credentials=['email'=>$email,'password'=>$password];
+        if(Auth::attempt($credentials)){
+            return response()->json(['message'=>'bien connecter']);
+        }else{
+            return response()->json(['message'=>'email ou password incorrect']);
+        }
     }
     public function show(Request $request){
         $id=$request->id;
