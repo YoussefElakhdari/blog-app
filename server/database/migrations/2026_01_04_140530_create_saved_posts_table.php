@@ -10,14 +10,16 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('saved_posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
-                ->constrained('users')   
-                ->onDelete('cascade');   
-            $table->string('title');
-            $table->text('description')->nullable();
+                ->constrained('users')
+                ->onDelete('cascade');
+            $table->foreignId('post_id')
+                ->constrained('posts')
+                ->onDelete('cascade');
             $table->timestamps();
+            $table->unique(['user_id','post_id']); // Ensure a user can save a post only once prevent duplicate saves
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('saved_posts');
     }
 };

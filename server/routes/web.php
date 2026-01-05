@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\PostController;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 //
 //les Routes profiles
 Route::get('/profiles',[AuthController::class,'index']);
@@ -22,4 +22,9 @@ Route::get('/posts/{id}',[PostController::class,'show']);
 Route::get('/posts/{id}',[PostController::class,'show']);
 Route::delete('/posts/{id}',[PostController::class,'destroy']);
 Route::put('/posts/{id}',[PostController::class,'update']);
+=======
+Route::get('/test', function () {
+    return response()->json(['message' => 'Test works']);
+});
+>>>>>>> 7fea2ee4c177ececd28e2a57b9880067fb93e957
 
